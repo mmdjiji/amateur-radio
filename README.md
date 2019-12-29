@@ -1,2 +1,2 @@
 # Amateur-Radio
-# 呼号：BI1IDJ
+呼号BI1IDJ

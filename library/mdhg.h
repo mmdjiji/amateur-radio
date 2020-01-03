@@ -9,6 +9,7 @@
 #ifndef _MDHG_H_
 #define  _MDHG_H_
 char* getCode(double lon, double lat) {
+	if(lon<0)lon+=360;if(lat<0)lat+=180;
 	static char code[6];
 	code[0] = (char)((int)((180 + lon) / 20)+(int)'A');
 	code[1] = (char)((int)((90 + lat) / 10)+(int)'A');

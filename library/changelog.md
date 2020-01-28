@@ -1,6 +1,7 @@
 gpslib.h 更新日志 作者：吉吉
 
 v1.1 2020年1月28日
+兼容 51单片机 可直接包含本头文件
 新增 RMC结构体
 新增 解析RMC信息 RMC rmc2data(char* str)
 完善 度分经纬度格式转换 double degree2format(double value) 的介绍

@@ -32,13 +32,13 @@
 #include <math.h>
 #include <string.h>
 typedef struct RMC {
-	char valid; 		//定位状态 'A'为有效定位 'V'为无效定位
+	char valid; 				//定位状态 'A'为有效定位 'V'为无效定位
 	char UTC_TIME[7]; 	//UTC时间 hhmmss
 	char UTC_DATE[7]; 	//UTC日期 ddmmyy
-	double lat; 		//纬度 有符号
-	double lon;			//精度 有符号
-	double speed;		//地面速率
-	double direction;	//地面航向
+	double lat; 				//纬度 有符号
+	double lon;					//经度 有符号
+	double speed;				//地面速率
+	double direction;		//地面航向
 } RMC;
 double degree2format(double value) {
 	int negative = 0;

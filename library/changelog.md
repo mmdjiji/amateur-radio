@@ -1,6 +1,7 @@
 gpslib.h 更新日志 作者：吉吉
 
 v1.1 2020年1月28日
+修复 char* getCode(double lat, double lon)的野内存会导致字符串溢出的bug
 兼容 51单片机 可直接包含本头文件
 新增 RMC结构体
 新增 解析RMC信息 RMC rmc2data(char* str)

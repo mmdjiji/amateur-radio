@@ -67,7 +67,7 @@ double* gps2data(char* str) {
 	return ret;
 }
 char* getCode(double lat, double lon) {
-	static char ucode[6];
+	static char ucode[7];
 	if(lon<0)lon+=360;
 	if(lat<0)lat+=180;
 	ucode[0] = (char)((int)((180 + lon) / 20)+(int)'A');
@@ -76,6 +76,7 @@ char* getCode(double lat, double lon) {
 	ucode[3] = (char)((int)(lat + 90) % 10+(int)'0');
 	ucode[4] = (char)((int)((lon - (int)(lon / 2) * 2) * 60 / 5)+(int)'A');
 	ucode[5] = (char)((int)((lat - (int)(lat)) * 60 / 2.5)+(int)'A');
+	ucode[6] = '\0';
 	return ucode;
 }
 RMC rmc2data(char* str) {

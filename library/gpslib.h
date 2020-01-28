@@ -41,13 +41,14 @@ typedef struct RMC {
 	double direction;		//地面航向
 } RMC;
 double degree2format(double value) {
-	int negative = 0;
+	int negative = 0, du;
+	double fen;
 	if(value < 0) {
 		negative = 1;
 		value = -value;
 	}
-	int du = floor(value / 100);
-	double fen = value - du*100;
+	du = floor(value / 100);
+	fen = value - du*100;
 	if(negative)du=-du;
 	return du + (fen/60);
 }
@@ -66,16 +67,16 @@ double* gps2data(char* str) {
 	return ret;
 }
 char* getCode(double lat, double lon) {
+	static char ucode[6];
 	if(lon<0)lon+=360;
 	if(lat<0)lat+=180;
-	static char code[6];
-	code[0] = (char)((int)((180 + lon) / 20)+(int)'A');
-	code[1] = (char)((int)((90 + lat) / 10)+(int)'A');
-	code[2] = (char)((int)((int)(lon + 180) % 20 / 2)+(int)'0');
-	code[3] = (char)((int)(lat + 90) % 10+(int)'0');
-	code[4] = (char)((int)((lon - (int)(lon / 2) * 2) * 60 / 5)+(int)'A');
-	code[5] = (char)((int)((lat - (int)(lat)) * 60 / 2.5)+(int)'A');
-	return code;
+	ucode[0] = (char)((int)((180 + lon) / 20)+(int)'A');
+	ucode[1] = (char)((int)((90 + lat) / 10)+(int)'A');
+	ucode[2] = (char)((int)((int)(lon + 180) % 20 / 2)+(int)'0');
+	ucode[3] = (char)((int)(lat + 90) % 10+(int)'0');
+	ucode[4] = (char)((int)((lon - (int)(lon / 2) * 2) * 60 / 5)+(int)'A');
+	ucode[5] = (char)((int)((lat - (int)(lat)) * 60 / 2.5)+(int)'A');
+	return ucode;
 }
 RMC rmc2data(char* str) {
 	static RMC output;
